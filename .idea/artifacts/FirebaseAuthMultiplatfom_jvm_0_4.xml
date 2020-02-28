@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FirebaseAuthMultiplatfom-jvm-0.4">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="FirebaseAuthMultiplatfom-jvm-0.4.jar">
+      <element id="module-output" name="FirebaseAuthMultiplatfom_jvmMain" />
+    </root>
+  </artifact>
+</component>
