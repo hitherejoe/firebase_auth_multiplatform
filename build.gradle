@@ -47,7 +47,7 @@ def GROUP_ID="co.joebirch"
 def ARTIFACT_ID="firebase_auth_multiplatform"
 
 def BINTRAY_REPOSITORY="joebirch"
-def BINTRAY_ORGINIZATION="firebase_auth_multiplatform"
+def BINTRAY_ORGINIZATION="joebirch"
 
 def ISSUE_URL="https://github.com/hitherejoe/firebase_auth_multiplatform/issues"
 def SITE_URL="https://github.com/hitherejoe/firebase_auth_multiplatform"
