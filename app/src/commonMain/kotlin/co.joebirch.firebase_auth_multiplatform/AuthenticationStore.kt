@@ -4,7 +4,7 @@ import co.joebirch.firebase_auth_multiplatform.model.FirebaseAnonymousAuthentica
 import co.joebirch.firebase_auth_multiplatform.model.FirebaseAuthenticationResponse
 import co.joebirch.firebase_auth_multiplatform.model.*
 
-interface AuthenticationStore {
+public interface AuthenticationStore {
 
     suspend fun signUp(
         apiKey: String,

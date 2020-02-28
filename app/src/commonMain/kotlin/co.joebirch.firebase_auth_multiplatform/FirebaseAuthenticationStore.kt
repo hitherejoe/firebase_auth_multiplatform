@@ -12,7 +12,7 @@ import io.ktor.client.statement.HttpStatement
 import io.ktor.client.statement.readText
 import kotlinx.serialization.json.Json
 
-open class FirebaseAuthenticationStore(
+public class FirebaseAuthenticationStore(
     private val httpClient: HttpClient
 ) : AuthenticationStore {
 

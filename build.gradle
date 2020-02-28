@@ -52,7 +52,7 @@ def BINTRAY_ORGINIZATION="joebirch"
 def ISSUE_URL="https://github.com/hitherejoe/firebase_auth_multiplatform/issues"
 def SITE_URL="https://github.com/hitherejoe/firebase_auth_multiplatform"
 def VCS_URL="https://github.com/hitherejoe/firebase_auth_multiplatform.git"
-def LIBRARY_VERSION_NAME=0.2
+def LIBRARY_VERSION_NAME=0.3
 
 repositories {
     jcenter()
