@@ -1,0 +1,100 @@
+apply plugin: 'kotlin-multiplatform'
+apply plugin: 'kotlinx-serialization'
+apply plugin: 'org.jetbrains.kotlin.native.cocoapods'
+apply plugin: 'com.android.library'
+
+group = GROUP
+version = VERSION_NAME
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions.unitTests.includeAndroidResources = true
+}
+
+kotlin {
+
+    android {
+        publishAllLibraryVariants()
+    }
+
+    iosArm64()
+    iosX64()
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation Deps.kotlin
+                implementation Deps.kotlin_common
+
+                implementation Deps.ktor_client_core
+                implementation Deps.ktor_client_json
+                implementation Deps.ktor_client_serialization
+
+                implementation Deps.kotlin_serialization
+            }
+        }
+
+        commonTest {
+            dependencies {
+                implementation kotlin("test")
+                implementation kotlin("test-junit")
+
+                implementation Deps.ktor_mock_jvm
+                implementation Deps.ktor_mock_native
+                implementation Deps.ktor_mock_client
+
+                implementation Deps.junit
+                implementation Deps.coroutines_core
+                implementation Deps.coroutines_test
+            }
+        }
+
+        androidMain {
+            dependsOn commonMain
+            dependencies {
+                implementation Deps.kotlin_serialization_runtime
+
+                implementation Deps.ktor_client_android
+                implementation Deps.ktor_json_jvm
+                implementation Deps.ktor_serialization_jvm
+                implementation Deps.ktor_client_okhttp
+            }
+        }
+
+        iosMain {
+            dependsOn commonMain
+            dependencies {
+                implementation Deps.kotlin_serialization_runtime_native
+
+                implementation Deps.ktor_client_ios
+                implementation Deps.ktor_client_json_native
+                implementation Deps.ktor_client_core_native
+                implementation Deps.ktor_client_serialization_native
+            }
+        }
+
+        configure([targets.iosX64,
+                   targets.iosArm64
+        ]) {
+            compilations.main.source(sourceSets.iosMain)
+        }
+    }
+}
+
+apply from: '../gradle/gradle-mvn-mpp-push.gradle'

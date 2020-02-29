@@ -76,9 +76,6 @@ repositories {
     mavenCentral()
 }
 
-group GROUP_ID
-version LIBRARY_VERSION_NAME
-
 afterEvaluate {
     project.publishing.publications.all {
         // rename artifacts
@@ -131,3 +128,5 @@ bintrayUpload.doFirst {
 }
 
 bintrayUpload.dependsOn publishToMavenLocal
+
+//apply from: '../gradle/gradle-mvn-mpp-push.gradle'
